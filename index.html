@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File Upload</title>
+</head>
+<body>
+  <h1>Projekt Upload</h1>
+
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+  </form>
+
+  <h2>Dateien</h2>
+  <ul id="list"></ul>
+
+  <script>
+    async function loadFiles() {
+      const res = await fetch("/list");
+      const files = await res.json();
+
+      document.getElementById("list").innerHTML = files
+        .map(f => `<li><a href="${f.url}" download>${f.name}</a></li>`)
+        .join("");
+    }
+
+    loadFiles();
+  </script>
+</body>
+</html>
