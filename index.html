@@ -1,30 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <title>File Upload</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Bereich</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Projekt Upload</h1>
-
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" />
-    <button type="submit">Upload</button>
-  </form>
-
-  <h2>Dateien</h2>
-  <ul id="list"></ul>
-
-  <script>
-    async function loadFiles() {
-      const res = await fetch("/list");
-      const files = await res.json();
-
-      document.getElementById("list").innerHTML = files
-        .map(f => `<li><a href="${f.url}" download>${f.name}</a></li>`)
-        .join("");
-    }
-
-    loadFiles();
-  </script>
+    <div class="container">
+        <div class="card">
+            <div class="badge">V 1.0</div>
+            <h1>Projekt Download</h1>
+            <p>Lade dir hier die aktuellste Version meines Projekts sicher herunter.</p>
+            
+            <a href="downloads/deine-datei.zip" download class="download-btn">
+                <span class="icon">▼</span> Jetzt Herunterladen
+            </a>
+            
+            <p class="file-info">ZIP-Archiv • Sicherer Download via GitHub</p>
+        </div>
+    </div>
 </body>
 </html>
